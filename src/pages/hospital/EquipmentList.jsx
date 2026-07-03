@@ -28,7 +28,215 @@ const EQUIPMENT_IMAGES = {
   "default": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae"
 };
 
+/* ===========================
+   STYLES OBJECT
+   Centralized styling for clean code
+
+const styles = {
+  page: {
+    backgroundColor: "#f4f7f6", // Light medical grey background
+    minHeight: "100vh",
+    padding: "40px",
+    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+    color: "#333",
+  },
+  header: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "30px",
+    flexWrap: "wrap",
+    gap: "20px",
+  },
+  title: {
+    fontSize: "32px",
+    fontWeight: "700",
+    color: "#0056b3", // Medical Blue
+    margin: 0,
+  },
+  controls: {
+    display: "flex",
+    gap: "15px",
+    alignItems: "center",
+  },
+  searchInput: {
+    padding: "12px 20px",
+    borderRadius: "8px",
+    border: "1px solid #e0e0e0",
+    width: "300px",
+    fontSize: "16px",
+    boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
+    outline: "none",
+    transition: "border 0.3s",
+  },
+  addButton: {
+    backgroundColor: "#0056b3",
+    color: "white",
+    border: "none",
+    padding: "12px 24px",
+    borderRadius: "8px",
+    fontSize: "16px",
+    fontWeight: "600",
+    cursor: "pointer",
+    boxShadow: "0 4px 6px rgba(0,86,179,0.2)",
+    transition: "background 0.3s",
+  },
+  grid: {
+    display: "grid",
+    // Responsive grid: fits as many as possible, min 300px width
+    gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+    gap: "25px",
+  },
+  card: {
+    backgroundColor: "white",
+    borderRadius: "12px",
+    overflow: "hidden",
+    boxShadow: "0 4px 15px rgba(0,0,0,0.05)",
+    transition: "transform 0.2s, box-shadow 0.2s",
+    display: "flex",
+    flexDirection: "column",
+    border: "1px solid #eee",
+  },
+  image: {
+    width: "100%",
+    height: "180px",
+    objectFit: "cover",
+    borderBottom: "1px solid #eee",
+  },
+  cardContent: {
+    padding: "20px",
+    flexGrow: 1,
+    display: "flex",
+    flexDirection: "column",
+  },
+  cardTitle: {
+    fontSize: "20px",
+    fontWeight: "600",
+    marginBottom: "10px",
+    color: "#2c3e50",
+  },
+  cardInfo: {
+    fontSize: "14px",
+    color: "#666",
+    marginBottom: "6px",
+    display: "flex",
+    alignItems: "center",
+  },
+  iconSpan: {
+    marginRight: "8px",
+    width: "16px",
+    textAlign: "center",
+  },
+  cardFooter: {
+    marginTop: "auto",
+    borderTop: "1px solid #f0f0f0",
+    paddingTop: "15px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "10px",
+  },
+  primaryBtn: {
+    flex: 1,
+    padding: "10px",
+    backgroundColor: "#f0f7ff",
+    color: "#0056b3",
+    border: "1px solid #cce4ff",
+    borderRadius: "6px",
+    cursor: "pointer",
+    fontWeight: "600",
+    fontSize: "14px",
+    transition: "background 0.2s",
+  },
+  deleteBtn: {
+    padding: "10px 15px",
+    backgroundColor: "#fff0f0",
+    color: "#d9534f",
+    border: "1px solid #ffcccc",
+    borderRadius: "6px",
+    cursor: "pointer",
+    fontWeight: "600",
+    fontSize: "14px",
+    transition: "background 0.2s",
+  },
+  // Status Badge Styles
+  statusBadge: {
+    padding: "4px 10px",
+    borderRadius: "20px",
+    fontSize: "12px",
+    fontWeight: "600",
+    textTransform: "uppercase",
+    display: "inline-block",
+    marginBottom: "10px",
+    width: "fit-content",
+  },
+  operational: {
+    backgroundColor: "#e6fffa",
+    color: "#00b894",
+  },
+  maintenance: {
+    backgroundColor: "#fff5e6",
+    color: "#e67e22",
+  },
+  detailsBtn: {
+    padding: "10px 15px",
+    backgroundColor: "#f5f6f8",
+    color: "#4a5568",
+    border: "1px solid #e2e8f0",
+    borderRadius: "6px",
+    cursor: "pointer",
+    fontWeight: "600",
+    fontSize: "14px",
+    transition: "background 0.2s",
+  },
+  modalOverlay: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1000,
+  },
+  modalContent: {
+    backgroundColor: "white",
+    borderRadius: "16px",
+    padding: "30px",
+    maxWidth: "500px",
+    width: "90%",
+    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+    border: "1px solid #e2e8f0",
+  },
+  modalHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "20px",
+  },
+  modalTitle: {
+    fontSize: "20px",
+    fontWeight: "700",
+    color: "#1a202c",
+    margin: 0,
+  },
+  modalCloseBtn: {
+    background: "none",
+    border: "none",
+    fontSize: "24px",
+    cursor: "pointer",
+    color: "#a0aec0",
+    padding: 0,
+  },
+};
+
+import { getAllEquipment, deleteEquipment, getEquipmentById } from "../../services/EquipmentService";
+import { useAuth } from "../../context/AuthContext";
+
 export default function EquipmentList({ onNavigate }) {
+  const { user } = useAuth();
   const [equipment, setEquipment] = useState([]);
   const [search, setSearch] = useState("");
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -119,6 +327,16 @@ export default function EquipmentList({ onNavigate }) {
           >
             + Add Equipment
           </button>
+          {user?.role === "hospital" && (
+            <button
+              style={styles.addButton}
+              onClick={() => onNavigate("add-equipment")}
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = "#004494"}
+              onMouseOut={(e) => e.currentTarget.style.backgroundColor = "#0056b3"}
+            >
+              + Add Equipment
+            </button>
+          )}
         </div>
       </div>
 
@@ -173,9 +391,17 @@ export default function EquipmentList({ onNavigate }) {
                 >
                   Schedule Service
                 </button>
+                {user?.role === "hospital" && (
+                  <button
+                    onClick={() => onNavigate("schedule-maintenance")}
+                    style={styles.primaryBtn}
+                  >
+                    Schedule Service
+                  </button>
+                )}
 
                 {/* Hide delete button for default items */}
-                {!(String(item.id).startsWith("EQ-00")) && (
+                {user?.role === "hospital" && !(String(item.id).startsWith("EQ-00")) && (
                   <button
                     onClick={() => handleDelete(item.id)}
                     className="py-2 px-3 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 rounded-lg cursor-pointer font-semibold text-sm transition-colors hover:bg-red-100 dark:hover:bg-red-900/40"
